@@ -42,7 +42,7 @@ import (
 
 var cfgFile string
 
-// 在没有任何子命令的情况下调用时，rootCmd表示基本命令
+// rootCmd 表示在没有任何子命令的情况下调用时的基本命令
 var rootCmd = &cobra.Command{
 	Use:   "cobracli",
 	Short: "A brief description of your application",
@@ -56,8 +56,8 @@ to quickly create a Cobra application.`,
 	//	Run: func(cmd *cobra.Command, args []string) { },
 }
 
-// Execute 将所有子命令添加到 root 命令并适当设置标志。
-// 这由 main 包中的 main() 调用。 它只需要对 rootCmd 发生一次。
+// Execute 将所有子命令添加到root命令并适当设置flags
+// 这由 main 包中的 main() 调用。 它只需要对 rootCmd 发生一次
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
@@ -68,7 +68,7 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	// 这里可以定义 flags 和 配置设置 。
+	// 这里可以定义 flags 和 配置设置。
 	// Cobra 支持 持久性flags ，如果在这个位置定义，则这些 flags 对应用程序来说是全局的
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.cobracli.yaml)")
 
@@ -144,4 +144,4 @@ func init() {
 }
 ```
 # cobra 初体验总结
-在 cobra 生成的代码中会有类似这样的变量 XXXCmd ，比如rootCmd，testCmd，其中root该程序的就是主命令；test就是子命令。这种变量的用处类似于结构体，作用在这些变量的方法都是对这些命令或者子命令来进行操作。
+在 cobra 生成的代码中会有类似这样的变量 XXXCmd ，比如rootCmd，testCmd，其中root该程序的就是主命令(比如改程序为cobracli，则在命令行执行的时候，就是用`cobracli --help`这样的形式来使用)；test就是子命令。这种变量的用处类似于结构体，作用在这些变量的方法都是对这些命令或者子命令来进行操作。

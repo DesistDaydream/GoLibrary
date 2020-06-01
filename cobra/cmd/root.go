@@ -27,7 +27,7 @@ import (
 
 var cfgFile string
 
-// rootCmd represents the base command when called without any subcommands
+// rootCmd 表示在没有任何子命令的情况下调用时的基本命令
 var rootCmd = &cobra.Command{
 	Use:   "cobracli",
 	Short: "A brief description of your application",
@@ -40,8 +40,8 @@ var rootCmd = &cobra.Command{
 	},
 }
 
-// Execute adds all child commands to the root command and sets flags appropriately.
-// This is called by main.main(). It only needs to happen once to the rootCmd.
+// Execute 将所有子命令添加到root命令并适当设置flags
+// 这由 main 包中的 main() 调用。 它只需要对 rootCmd 发生一次
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
@@ -52,25 +52,22 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	// Here you will define your flags and configuration settings.
-	// Cobra supports persistent flags, which, if defined here,
-	// will be global for your application.
-
+	// 这里可以定义 flags 和 配置设置。
+	// Cobra 支持 持久性flags ，如果在这个位置定义，则这些 flags 对应用程序来说是全局的。
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "指定配置文件(默认在$HOME/.cobracli.yaml)")
 
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
+	// Cobra 还支持本地 flags ，仅在直接调用此操作时才运行。
 	rootCmd.Flags().BoolP("toggle", "t", false, "关于toggle标志的帮助信息")
 }
 
-// initConfig reads in config file and ENV variables if set.
+// initConfig 读取配置文件和ENV变量(如果已设置).
 func initConfig() {
 	if cfgFile != "" {
-		// Use config file from the flag.
+		// 使用 flag 传递过来的配置文件
 		viper.SetConfigFile(cfgFile)
 		fmt.Println("当使用 --config 标签时，打印该内容")
 	} else {
-		// Find home directory.
+		// 查找 home 目录.
 		home, err := homedir.Dir()
 		fmt.Println("不使用 --config 标签时，打印该内容")
 		if err != nil {
@@ -78,14 +75,14 @@ func initConfig() {
 			os.Exit(1)
 		}
 
-		// Search config in home directory with name ".cobracli" (without extension).
+		// 在主目录中搜索名称为“ .cobracli”的配置（无扩展名）。
 		viper.AddConfigPath(home)
 		viper.SetConfigName(".cobracli")
 	}
 
-	viper.AutomaticEnv() // read in environment variables that match
+	viper.AutomaticEnv() // 读取匹配的环境变量
 
-	// If a config file is found, read it in.
+	// 如果找到配置文件，则读入它。
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Println("Using config file:", viper.ConfigFileUsed())
 	}

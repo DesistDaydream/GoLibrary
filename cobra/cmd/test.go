@@ -21,7 +21,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// testCmd represents the test command
+// testCmd 表示test子命令
 var testCmd = &cobra.Command{
 	Use:   "test",
 	Short: "在执行主程序的--help时，子命令的短描述就在这里",
@@ -34,13 +34,11 @@ var testCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(testCmd)
 
-	// Here you will define your flags and configuration settings.
+	// 这里可以定义该子命令独有的 flags 和 配置设置
 
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
+	// Cobra支持Persistent Flags，这将对该子命令和该子命令下的所有子命令起作用，例如：
 	testCmd.PersistentFlags().String("foo", "", "这是关于test子命令中--foo标签的帮助信息")
 
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
+	// Cobra支持仅在直接调用此命令时运行的本地标志，例如：
 	// testCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
