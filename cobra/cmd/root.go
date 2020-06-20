@@ -54,6 +54,8 @@ func init() {
 
 	// 这里可以定义 flags 和 配置设置。
 	// Cobra 支持 持久性flags ，如果在这个位置定义，则这些 flags 对应用程序来说是全局的。
+	// 第一个参数是变量，用于存储该flag的值；第二个参数为该flag的名字；第三个参数为该flag的默认值,无默认值可以为空；第四个参数是该flag的描述信息
+	// 比如我现在使用如下命令：cobracli --config abc 。那么cfgFile的值为abc。
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "指定配置文件(默认在$HOME/.cobracli.yaml)")
 
 	// Cobra 还支持本地 flags ，仅在直接调用此操作时才运行。
@@ -65,11 +67,11 @@ func initConfig() {
 	if cfgFile != "" {
 		// 使用 flag 传递过来的配置文件
 		viper.SetConfigFile(cfgFile)
-		fmt.Println("当使用 --config 标签时，打印该内容")
+		fmt.Println("当使用 --config 标签时，打印该内容，config的值为:",cfgFile)
 	} else {
 		// 查找 home 目录.
 		home, err := homedir.Dir()
-		fmt.Println("不使用 --config 标签时，打印该内容")
+		fmt.Println("不使用 --config 标签时，打印该内容,config的默认值为：",cfgFile)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
