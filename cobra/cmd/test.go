@@ -27,7 +27,7 @@ var testCmd = &cobra.Command{
 	Short: "在执行主程序的--help时，子命令的短描述就在这里",
 	Long:  `关于使用 test 子命令时的帮助信息和提示`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("执行 test 子命令时，输出该内容")
+		fmt.Println("执行 test 子命令时，执行该代码块")
 	},
 }
 
@@ -36,9 +36,9 @@ func init() {
 
 	// 这里可以定义该子命令独有的 flags 和 配置设置
 
-	// Cobra支持Persistent Flags，这将对该子命令和该子命令下的所有子命令起作用，例如：
+	// Cobra 支持Persistent Flags，这将对该子命令和该子命令下的所有子命令起作用，例如：
 	testCmd.PersistentFlags().String("foo", "", "这是关于test子命令中--foo标签的帮助信息")
 
-	// Cobra支持仅在直接调用此命令时运行的本地标志，例如：
+	// Cobra 支持仅在直接调用此命令时运行的本地 Flags，e.g.：
 	// testCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
