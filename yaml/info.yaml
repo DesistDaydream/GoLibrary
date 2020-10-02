@@ -1,5 +1,5 @@
 SiteName: DesistDaydream
-SiteAddr: TiJin
+SiteAddr: TianJin
 Https: true
 Nginx:
   Port: 443
