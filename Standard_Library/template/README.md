@@ -1,7 +1,7 @@
 # Go Template 库
 Go 原生支持的模板分为两种
-[text](https://pkg.go.dev/text/template)
-[html](https://pkg.go.dev/html/template)
+1. [text](https://pkg.go.dev/text/template)
+2. [html](https://pkg.go.dev/html/template)
 
 # text/template 库
 template 库 实现了数据驱动的用于生成文本输出的模板。
