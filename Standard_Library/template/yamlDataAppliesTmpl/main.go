@@ -34,13 +34,16 @@ func main() {
 	// 创建并解析模板文件
 	t := template.Must(template.ParseFiles("template/yaml.tmpl"))
 
-	// 读取 yaml 文件内容，并将内容放入 config 中后，通过 Unmarshal 处理内容，再放入 yamlInfo 中。
+	// 读取 yaml 文件内容，并将内容放入 config 中后
 	config, errRead := ioutil.ReadFile("./info.yaml")
 	if errRead != nil {
 		fmt.Print(errRead)
 	}
 
+	// 声明结构体，用于存储 yaml 格式的数据
 	var yamlInfo YamlInfo
+
+	// 通过 Unmarshal 解析 yaml 格式数据，并将解析结果放入 yamlInfo 中。
 	errUnmarshal := yaml.Unmarshal(config, &yamlInfo)
 	if errUnmarshal != nil {
 		log.Fatalf("error: %v", errUnmarshal)
