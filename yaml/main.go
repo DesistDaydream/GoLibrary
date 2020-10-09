@@ -40,14 +40,16 @@ func main() {
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
-	fmt.Printf("--- 单行 yaml 格式:\n%v\n\n", t)
+	fmt.Printf("--- 单行 yaml 格式:\n%v\n", t)
+	fmt.Printf("注意：这种类型的数据常用于进行值传递，比如将这种解析后的数据传递到 go 模板中\n\n")
+
 	// Marshel 具有整理、排列、打包、编组等含义。用于给定的值序列化为 YAML 文档格式。
 	// Marshel() 参数可以接受的数据格式为 `(...) yaml:"[<key>][,<flag1>[,<flag2>]]" (...)`
 	d1, err := yaml.Marshal(&t)
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
-	fmt.Printf("--- 多行 yaml 格式:\n%s\n\n", string(d1))
+	fmt.Printf("--- 多行 yaml 格式:\n%s\n", string(d1))
 
 	// 通过 make 创建一个存储 yaml 数据的地方
 	// 这种方式存储的 yaml 数据，单行 yaml 格式可以显示 key
@@ -65,5 +67,5 @@ func main() {
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
-	fmt.Printf("--- 多行 yaml 格式:\n%s\n\n", string(d2))
+	fmt.Printf("--- 多行 yaml 格式:\n%s\n", string(d2))
 }
