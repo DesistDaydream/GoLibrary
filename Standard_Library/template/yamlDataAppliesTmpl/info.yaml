@@ -1,0 +1,10 @@
+user:
+- name: DesistDaydream
+  addr: TianJin
+- name: ZhangNa
+  addr: TianJin
+https: true
+nginx:
+  port: 443
+  logPath:  "/var/log//nginx/nginx.log"
+  path: "/opt/nginx/"
