@@ -42,7 +42,7 @@ func main() {
 		log.Fatalf("error: %v", err)
 	}
 	fmt.Printf("--- 单行 yaml 格式:\n%v\n", t)
-	fmt.Printf("注意：这种类型的数据常用于进行值传递，比如将这种解析后的数据传递到 go 模板中\n\n")
+	fmt.Printf("注意：使用 Unmarshal 处理后的的数据常用于进行值传递，比如将这种解析后的数据传递到 go 模板、或者传递到 kubeclt 后进行二次加工并输出等等\n\n")
 
 	// Marshel 具有整理、排列、打包、编组等含义。用于给定的值序列化为 YAML 文档格式。
 	// 官方文档称 Marshel 的行为 encode(编码) yaml 数据。
