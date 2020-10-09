@@ -1,4 +1,4 @@
-module yaml
+module yamlParse
 
 go 1.15
 
