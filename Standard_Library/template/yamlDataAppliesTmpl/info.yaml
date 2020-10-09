@@ -1,9 +1,9 @@
+name: DesistDaydream
 user:
-- name: DesistDaydream
+- name: LiChenHao
   addr: TianJin
 - name: ZhangNa
   addr: TianJin
-https: true
 nginx:
   port: 443
   logPath:  "/var/log//nginx/nginx.log"

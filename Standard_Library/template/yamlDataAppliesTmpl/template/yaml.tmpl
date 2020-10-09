@@ -3,9 +3,11 @@
 下面是 info.yaml 中所有的值
 {{ . }}
 
-用户信息为：
-{{range .User}}
-用户：{{.Name}}
-{{end}}
+代码维护者：{{ .Name }}
 
-nginx 监听端口为：{{ .SiteNginx.Port }}
+用户信息列表：
+{{- range .User}}
+用户名：{{.Name}}
+{{- end}}
+
+nginx 监听端口为：{{ .Nginx.Port }}

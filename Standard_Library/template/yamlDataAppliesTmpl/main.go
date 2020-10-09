@@ -23,23 +23,24 @@ type Nginx struct {
 	Path    string `yaml:"path"`
 }
 
-//Config   系统配置配置
-type Config struct {
-	User      []User `yaml:"user"`
-	HTTPS     bool   `yaml:"https"`
-	SiteNginx Nginx  `yaml:"nginx"`
+//Info 示例文件信息
+type Info struct {
+	Name  string `yaml:"name"`
+	User  []User `yaml:"user"`
+	Nginx Nginx  `yaml:"nginx"`
 }
 
 func main() {
 	// 创建并解析模板文件
 	t := template.Must(template.ParseFiles("template/yaml.tmpl"))
 
-	var setting Config
 	// 读取 yaml 文件内容，并将内容放入 config 中后，通过 Unmarshal 处理内容后，放入 setting 中。
 	config, errRead := ioutil.ReadFile("./info.yaml")
 	if errRead != nil {
 		fmt.Print(errRead)
 	}
+
+	var setting Info
 	errUnmarshal := yaml.Unmarshal(config, &setting)
 	if errUnmarshal != nil {
 		log.Fatalf("error: %v", errUnmarshal)
