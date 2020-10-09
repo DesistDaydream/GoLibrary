@@ -8,7 +8,7 @@ Go 原生支持的模板分为两种
 [深入剖析 Go template](https://www.cnblogs.com/f-ck-need-u/p/10035768.html)  
 
 # text/template 库
-template 库 实现了数据驱动的用于生成文本输出的模板。
+template库 实现了数据驱动的用于生成文本输出的模板。
 
 如果要生成HTML格式的输出，参见html/template包，该包提供了和本包相同的接口，但会自动将输出转化为安全的HTML格式输出，可以抵抗一些网络攻击。
 
