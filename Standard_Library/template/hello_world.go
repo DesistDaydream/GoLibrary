@@ -7,7 +7,7 @@ import (
 
 func main() {
 	// 创建一个名为 hello world 的未定义模板。此时模板中无任何内容，模板内容以及要传递的值都没有，仅仅是生成一个模板指针，用来后续调用。
-	// 这种行为类似于 open 一个 文件，或者 new 一个数组之类。
+	// 这种行为类似于 open 一个文件，或者 new 一个数组之类，或者 open 一个数据库，或者 open 一个 redis 等等。
 	t := template.New("hello world")
 
 	// 定义模板 t 。将 Parse() 方法中的参数解析为模板的主体。
