@@ -25,13 +25,12 @@ type Config struct {
 
 func main() {
 	var setting Config
-	config, errRead := ioutil.ReadFile("./info.yaml")
+	config, errRead := ioutil.ReadFile("./json_yaml/file/info.yaml")
 	if errRead != nil {
 		fmt.Print(errRead)
 	}
-	errUnmarshal := yaml.Unmarshal(config, &setting)
-	if errUnmarshal != nil {
-		log.Fatalf("error: %v", errUnmarshal)
+	if err := yaml.Unmarshal(config, &setting); err != nil {
+		log.Fatalf("error: %v", err)
 	}
 
 	fmt.Println(setting)
